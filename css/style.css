@@ -1,0 +1,84 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container-general{
+    display: flex;
+    height: 100%;
+}
+
+.columns{
+    height: 100%;
+    width: 75%;
+    display: flex;
+}
+
+.elevatorButton{
+    display: flex;
+    width: 25%;
+    border: 1px solid;
+    margin: 4px;
+    padding: 4px;
+    align-items: center;
+    justify-content: center;
+}
+
+.column{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;    
+    border: 1px solid;
+    margin: 4px;
+}
+
+#column1{
+    background-color: #FFDFD3;
+}
+#column2{
+    background-color: #FEC8D8;
+}
+#column3{
+    background-color: #D291BC;
+}
+
+.column > div {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    flex: 1 1 auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #25cc25;
+    position: relative;
+    left: 70%;
+    bottom: 14%;
+    visibility: hidden;
+  }
+
+.arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #25cc25;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 20%;
+    top: 20%;
+    visibility: hidden;
+  }
