@@ -18,7 +18,7 @@ class Elevator {
 
 	init(){
 		this.orderLogicalTour();
-		this.drawElevator();
+		this.draw();
 	}
 
 	checkFirstAndEndStage(){
@@ -35,7 +35,7 @@ class Elevator {
 		if(!this.nextStage){
 			this.stopped = true;
 		}
-		this.drawElevator();
+		this.draw();
 	}
 
 	changeStage(){
@@ -102,7 +102,7 @@ class Elevator {
 		}
 	}
 
-	drawElevator(){
+	draw(){
 		let elevatorId = 'column' + this.elevatorNumber;
 		let stageClass = 'stage' + this.stage;
 		let arrowDown = 'arrow-down' + this.stage;
@@ -113,7 +113,7 @@ class Elevator {
 		let allArrowsDownDiv = document.getElementById(elevatorId).getElementsByClassName('arrow-down');
 		let allArrowsUpDiv = document.getElementById(elevatorId).getElementsByClassName('arrow-up');
 
-		this.cleanDrawElevator(allStagesDiv);
+		this.cleanDraw(allStagesDiv);
 		this.cleanDrawArrows(allArrowsDownDiv);
 		this.cleanDrawArrows(allArrowsUpDiv);
 		
@@ -126,7 +126,7 @@ class Elevator {
 		}
 	}
 
-	cleanDrawElevator(allStagesDiv){
+	cleanDraw(allStagesDiv){
 		for( let i=0; i< allStagesDiv.length; i++ ){
 			var childDiv = allStagesDiv[i];
 			childDiv.style.backgroundColor = '';
@@ -152,13 +152,3 @@ class Elevator {
 	}
 
 }
-
-let selectedFloors1 = [10,5,8,2];
-let selectedFloors2 = [8,6,2,10];
-let selectedFloors3 = [2,4,10,8];
-
-let elevator1 = new Elevator(1, true, 3, selectedFloors1);
-let elevator2 = new Elevator(2, true, 7, selectedFloors2);
-let elevator3 = new Elevator(3, true, 1, selectedFloors3);
-
-let elevators = [elevator1, elevator2, elevator3];
