@@ -9,9 +9,8 @@ class Elevator {
 	route = [];
 	nextStage;
 
-	constructor(elevatorNumber, stopped, stage, selectedFloors) {
+	constructor(elevatorNumber, stage, selectedFloors) {
 		this.elevatorNumber = elevatorNumber;
-		this.stopped = stopped;
 		this.stage = stage;
 		this.selectedFloors = selectedFloors;
 	}
