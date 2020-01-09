@@ -49,4 +49,20 @@ class ElevatorController {
 		return console.log(closest);
 	}
 
+	findWithEnergySaving(){
+/*		let ejemplo1 = [3,10,5,8,2];
+		let ejemplo2 = [7,8,6,2,10];
+		let marcado = 4;
+
+		3,2,5,8,10
+		7,8,10,6,2
+*/
+
+
+
+
+
+
+	}
+
 }

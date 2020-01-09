@@ -49,6 +49,15 @@ class Elevator {
 		}
 	}
 
+	orderEnergySaveTour(){
+		//let sasa = this.getClosestArray(this.stage, this.selectedFloors);
+		console.log('sasa');
+	}
+
+	getClosestArray(search, arr) {
+
+ 	}
+
 	orderLogicalTour(){
 		//remove actual stage if exist in selectedFloors
 		this.remove(this.selectedFloors, this.stage);
@@ -84,7 +93,7 @@ class Elevator {
 			 }
 		});
 		return closest;
- }
+ 	}
 
 	remove(array, element) {
 		const index = array.indexOf(element);
@@ -151,3 +160,4 @@ class Elevator {
 	}
 
 }
+

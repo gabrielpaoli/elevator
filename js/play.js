@@ -24,7 +24,7 @@ async function simulateElevatorsMove(){
 	console.log('%c =============== ', 'color: red');
 
 	for( let i=0; i< 3; i++ ){
-		await sleep(2000);
+		await sleep(4000);
 		elevator1.goNextStage();
 		elevator2.goNextStage();
 		elevator3.goNextStage();
@@ -34,4 +34,4 @@ async function simulateElevatorsMove(){
 
 }
 
-simulateElevatorsMove();
+//simulateElevatorsMove();
