@@ -1,6 +1,6 @@
-let selectedFloors1 = [10,5,8,2];
-let selectedFloors2 = [8,6,2,10];
-let selectedFloors3 = [2,4,10,8];
+let selectedFloors1 = [2,4,8,9];
+let selectedFloors2 = [3,5,8,7];
+let selectedFloors3 = [2,4,1,8];
 
 let elevator1 = new Elevator(1, 3, selectedFloors1);
 let elevator2 = new Elevator(2, 7, selectedFloors2);
@@ -24,7 +24,7 @@ async function simulateElevatorsMove(){
 	console.log('%c =============== ', 'color: red');
 
 	for( let i=0; i< 3; i++ ){
-		await sleep(2000);
+		await sleep(4000);
 		elevator1.goNextStage();
 		elevator2.goNextStage();
 		elevator3.goNextStage();
@@ -34,4 +34,5 @@ async function simulateElevatorsMove(){
 
 }
 
+//elevator1.orderEnergySaveTour();
 simulateElevatorsMove();
