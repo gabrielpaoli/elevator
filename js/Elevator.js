@@ -2,22 +2,30 @@ class Elevator {
 	elevatorNumber;
 	stopped = true;
 	stage = 0; 
+	initialStage = 0; 
 	maxStage = 10;
 	maxPeople = 6; 
 	direction = 0; //0 stopped, 1 up, 2 down
 	selectedFloors = [];
 	route = [];
 	nextStage;
+	type;
 
-	constructor(elevatorNumber, stage, selectedFloors) {
+	constructor(elevatorNumber, stage, selectedFloors, type) {
 		this.elevatorNumber = elevatorNumber;
 		this.stage = stage;
+		this.initialStage = stage;
 		this.selectedFloors = selectedFloors;
+		this.type = type;
 	}
 
 	init(){
-		//this.orderLogicalTour();
-		this.orderEnergySaveTour();
+		if(this.type === 'normal'){
+			this.orderLogicalTour();
+		}else if(this.type === 'saveEnergy'){
+			this.orderEnergySaveTour();
+		}	
+
 		this.draw();
 	}
 
@@ -29,13 +37,21 @@ class Elevator {
 	}
 
 	goNextStage(){
+		let actualStage = this.stage;
+		
 		this.stage = this.route.shift(); 
 		this.nextStage = this.route[0];
 		this.setDirection(this.nextStage);
+
+		if(this.stopped === false || actualStage === this.initialStage){
+			this.draw();
+			this.stopped = false;
+		}
+
 		if(!this.nextStage){
 			this.stopped = true;
 		}
-		this.draw();
+		
 	}
 
 	changeStage(){
@@ -113,7 +129,8 @@ class Elevator {
 			this.direction = 2;
 		}
 	}
-
+	
+	//TODO: We need to abstract the draw method in new class
 	draw(){
 		let elevatorId = 'column' + this.elevatorNumber;
 		let stageClass = 'stage' + this.stage;
@@ -125,27 +142,27 @@ class Elevator {
 		let allArrowsDownDiv = document.getElementById(elevatorId).getElementsByClassName('arrow-down');
 		let allArrowsUpDiv = document.getElementById(elevatorId).getElementsByClassName('arrow-up');
 
-		this.cleanDraw(allStagesDiv);
-		this.cleanDrawArrows(allArrowsDownDiv);
-		this.cleanDrawArrows(allArrowsUpDiv);
+		this.clear(allStagesDiv);
+		this.clearArrows(allArrowsDownDiv);
+		this.clearArrows(allArrowsUpDiv);
 		
 		SpecificStageDiv.style.backgroundColor = '#c13838';
 
-		if(this.direction === 1){
+		if(this.direction === 1 && this.type === 'normal'){
 			SpecificStageDiv.getElementsByClassName(arrowUp)[0].style.visibility = 'initial';
-		}else if(this.direction === 2){
+		}else if(this.direction === 2 && this.type === 'normal'){
 			SpecificStageDiv.getElementsByClassName(arrowDown)[0].style.visibility = 'initial';
 		}
 	}
 
-	cleanDraw(allStagesDiv){
+	clear(allStagesDiv){
 		for( let i=0; i< allStagesDiv.length; i++ ){
 			var childDiv = allStagesDiv[i];
 			childDiv.style.backgroundColor = '';
 		}
 	}
 
-	cleanDrawArrows(allStagesDiv){
+	clearArrows(allStagesDiv){
 		for( let i=0; i< allStagesDiv.length; i++ ){
 			var childDiv = allStagesDiv[i];
 			childDiv.style.visibility = 'hidden';
@@ -156,6 +173,7 @@ class Elevator {
 		console.log('Elevator number: ' + this.elevatorNumber);
 		console.log('Stop: ' + this.stopped);
 		console.log('Stage: ' + this.stage);
+		console.log('Initial stage: ' + this.initialStage);
 		console.log('Max people: ' + this.maxPeople);
 		console.log('Direction: ' + this.direction);
 		console.log('Selected floors: ' + this.selectedFloors);

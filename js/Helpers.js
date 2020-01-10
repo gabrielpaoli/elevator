@@ -1,10 +1,3 @@
-
-/*
-TODO: 
-	1) Remove actual stage to array and sum all stages
-	2) Create new helper class and put all abstract content like to "remove method"
-*/
-
 class Permute {
 	
 	disorderedTour = [];
@@ -54,23 +47,27 @@ class Permute {
 				disorderedTour.push(disorderedTour[0]);
 				disorderedTour.shift();
 				for(let e = 0; e < disorderedTour.length; e++){
-					chain += disorderedTour[e];
+					chain += ',' + disorderedTour[e];
 				}
-				preFinal.push(temporal[u] + chain);
-				preFinal.push(temporal[u] + this.reverseString(chain));
+				preFinal.push(temporal[u ]+ chain);
+				preFinal.push(temporal[u] + ',' + this.reverseString(chain));
 				chain="";
 			}
 			disorderedTour.shift();
 			disorderedTour.push(temporal[u]);
 		}
-
 		preFinal.forEach(function(arr0) {
-			arr1 = arr0.split('');
+			const lastCharacter = arr0.slice(-1);
+			if(lastCharacter === ','){
+				arr0 = arr0.substring(0, arr0.length-1);
+			}	
+			//Refactor, it is functional but we need fix it
+			arr0 = arr0.replace("01", "10");
+			arr1 = arr0.split(',');
 			let realDigits = arr1.map(Number)
 			realDigits.unshift(actualStage);
 			final.push(realDigits);
 		});
-
 		return final;
 	}
 
@@ -82,7 +79,7 @@ class generalHelper{
 		let toursWithValue = {};
 		let numberToCompare = null;
 
-		arrayToSum.forEach(function(items, position) {
+		arrayToSum.forEach(function(items) {
 			let totalValue = 0;
 			items.forEach(function(item, index) {
 				if (index < items.length - 1) {
@@ -94,9 +91,15 @@ class generalHelper{
 				numberToCompare = totalValue;
 			}
 		});
-		
+
 		return toursWithValue.items;
 	}
 
-
 }
+
+/*
+let sa = new Permute([2,4,8,10], 9);
+let su = sa.getAllPosibleTours();
+let sq = new generalHelper();
+sq.getShortestWay(su);
+*/

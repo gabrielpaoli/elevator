@@ -1,10 +1,12 @@
-let selectedFloors1 = [2,4,8,9];
-let selectedFloors2 = [3,5,8,7];
-let selectedFloors3 = [2,4,1,8];
+let selectedFloors1 = [2,4,8,10];
+let selectedFloors2 = [3,5,8,9];
+let selectedFloors3 = [2,4,0,8];
 
-let elevator1 = new Elevator(1, 3, selectedFloors1);
-let elevator2 = new Elevator(2, 7, selectedFloors2);
-let elevator3 = new Elevator(3, 1, selectedFloors3);
+const type = 'normal'; 
+
+let elevator1 = new Elevator(1, 9, selectedFloors1, type);
+let elevator2 = new Elevator(2, 7, selectedFloors2, type);
+let elevator3 = new Elevator(3, 1, selectedFloors3, type);
 
 let elevators = [elevator1, elevator2, elevator3];
 
@@ -23,16 +25,16 @@ async function simulateElevatorsMove(){
 	controller.findNearest();
 	console.log('%c =============== ', 'color: red');
 
-	for( let i=0; i< 3; i++ ){
+	for( let i=0; i< 10; i++ ){
 		await sleep(4000);
 		elevator1.goNextStage();
 		elevator2.goNextStage();
 		elevator3.goNextStage();
 		controller.findNearest();
+		//elevator1.showData();
 		console.log('%c =============== ', 'color: red');
 	}
 
 }
 
-//elevator1.orderEnergySaveTour();
 simulateElevatorsMove();
