@@ -16,7 +16,8 @@ class Elevator {
 	}
 
 	init(){
-		this.orderLogicalTour();
+		//this.orderLogicalTour();
+		this.orderEnergySaveTour();
 		this.draw();
 	}
 
@@ -50,13 +51,16 @@ class Elevator {
 	}
 
 	orderEnergySaveTour(){
-		//let sasa = this.getClosestArray(this.stage, this.selectedFloors);
-		console.log('sasa');
+		let actualStage = this.stage;
+		let tour = this.selectedFloors;
+		const allPosibleTours = new Permute(tour, actualStage);
+		const mathHelper = new generalHelper();
+		let orderedTour = mathHelper.getShortestWay(allPosibleTours.getAllPosibleTours());
+		this.remove(orderedTour, this.stage);
+		this.nextStage = this.getClosest(this.stage, this.selectedFloors);
+		this.setDirection(this.nextStage);
+		this.route = orderedTour;
 	}
-
-	getClosestArray(search, arr) {
-
- 	}
 
 	orderLogicalTour(){
 		//remove actual stage if exist in selectedFloors
