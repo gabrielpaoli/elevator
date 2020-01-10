@@ -25,7 +25,7 @@ async function simulateElevatorsMove(){
 	controller.findNearest();
 	console.log('%c =============== ', 'color: red');
 
-	for( let i=0; i< 10; i++ ){
+	for( let i=0; i< 5; i++ ){
 		await sleep(4000);
 		elevator1.goNextStage();
 		elevator2.goNextStage();
