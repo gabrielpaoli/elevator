@@ -1,12 +1,12 @@
 let selectedFloors1 = [2,4,8,10];
 let selectedFloors2 = [3,5,8,9];
-let selectedFloors3 = [2,4,0,8];
+let selectedFloors3 = [1,4,0,8];
 
 const type = 'normal'; 
 
 let elevator1 = new Elevator(1, 9, selectedFloors1, type);
 let elevator2 = new Elevator(2, 7, selectedFloors2, type);
-let elevator3 = new Elevator(3, 1, selectedFloors3, type);
+let elevator3 = new Elevator(3, 5, selectedFloors3, type);
 
 let elevators = [elevator1, elevator2, elevator3];
 
